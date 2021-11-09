@@ -18,3 +18,10 @@ Thumbs.db
 
 # Sublime Files
 .sublime
+
+#CPP build artifacts
+Debug/
+x64/
+
+#VS
+.vs/
