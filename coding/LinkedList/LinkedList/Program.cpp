@@ -2,18 +2,19 @@
 //
 
 #include <iostream>
-#include "Node.h"
-#include "LinkedList.h"
+#include "t_Node.h"
+#include "t_Node.cpp"
+#include "t_LinkedList.h"
+#include "t_SinglyLinkedList.cpp"
 
 int main()
 {
-    Node n = {5};
-    LinkedList linkedList {};
-
-    linkedList.pushBack(0);
+    Node<char> n = {'a'};
+    LinkedList<int> linkedList {};
 
     std::cout << "Size: " << linkedList.size << std::endl;
 
+    linkedList.pushBack(0);
     linkedList.pushBack(1);
     linkedList.pushBack(2);
     linkedList.pushBack(3);
@@ -24,13 +25,39 @@ int main()
     linkedList.pushBack(8);
     linkedList.pushBack(9);
     linkedList.pushBack(10);
+    
 
     linkedList.pushFront(-1);
 
-    int test{ linkedList.popBack() };
-    int popFrontTest{ linkedList.popFront() };
+    auto test{ linkedList.popBack() };
+    auto popFrontTest{ linkedList.popFront() };
 
     std::cout << "Size: " << linkedList.size << std::endl;
+
+    linkedList.insert(0, 100);
+
+    for (int i = 0; i < linkedList.size; ++i) {
+        std::cout << "Element at " << i << ": " << linkedList.valueAt(i) << std::endl;
+    }
+
+    linkedList.reverse();
+    std::cout << "---REVERSE---" << std::endl;
+
+    for (int i = 0; i < linkedList.size; ++i) {
+        std::cout << "Element at " << i << ": " << linkedList.valueAt(i) << std::endl;
+    }
+
+    std::cout << "---ERASE ELEMENT 0---" << std::endl;
+
+    linkedList.erase(0);
+
+    for (int i = 0; i < linkedList.size; ++i) {
+        std::cout << "Element at " << i << ": " << linkedList.valueAt(i) << std::endl;
+    }
+
+    std::cout << "---ERASE ELEMENT 5---" << std::endl;
+
+    linkedList.erase(5);
 
     for (int i = 0; i < linkedList.size; ++i) {
         std::cout << "Element at " << i << ": " << linkedList.valueAt(i) << std::endl;
