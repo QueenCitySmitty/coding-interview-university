@@ -6,11 +6,12 @@
 #include "t_Node.cpp"
 #include "t_LinkedList.h"
 #include "t_SinglyLinkedList.cpp"
+#include "t_Stack.h"
+#include "t_Stack.cpp"
 
-int main()
+void testLinkedList()
 {
-    Node<char> n = {'a'};
-    LinkedList<int> linkedList {};
+    LinkedList<int> linkedList{};
 
     std::cout << "Size: " << linkedList.size << std::endl;
 
@@ -25,7 +26,7 @@ int main()
     linkedList.pushBack(8);
     linkedList.pushBack(9);
     linkedList.pushBack(10);
-    
+
 
     linkedList.pushFront(-1);
 
@@ -62,6 +63,32 @@ int main()
     for (int i = 0; i < linkedList.size; ++i) {
         std::cout << "Element at " << i << ": " << linkedList.valueAt(i) << std::endl;
     }
+}
+
+void testStack()
+{
+    Stack<std::string> stack{};
+
+    stack.Push("one");
+    stack.Push("two");
+    stack.Push("three");
+    stack.Push("four");
+    stack.Push("five");
+
+    auto val = stack.Peek();
+
+    std::cout << "Stack size: " << stack.Count() << std::endl;
+
+    while (!stack.isEmpty())
+    {
+        std::cout << "Val: " << stack.Pop() << std::endl;
+    }
+}
+
+int main()
+{
+    // testLinkedList();
+    testStack();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

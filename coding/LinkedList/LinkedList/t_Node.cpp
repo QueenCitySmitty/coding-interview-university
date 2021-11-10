@@ -4,6 +4,7 @@ template <class T>
 Node<T>::Node(const T val) {
 	Node::value = val;
 	Node::next = nullptr;
+	Node::prev = nullptr;
 }
 
 template <class T>

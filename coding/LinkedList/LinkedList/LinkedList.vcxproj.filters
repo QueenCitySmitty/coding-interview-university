@@ -24,12 +24,18 @@
     <ClCompile Include="t_SinglyLinkedList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="t_Stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="t_LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="t_Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="t_Stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

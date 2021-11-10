@@ -142,8 +142,10 @@
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="t_SinglyLinkedList.cpp" />
     <ClCompile Include="t_Node.cpp" />
+    <ClCompile Include="t_Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="t_Stack.h" />
     <ClInclude Include="t_LinkedList.h" />
     <ClInclude Include="t_Node.h" />
   </ItemGroup>
