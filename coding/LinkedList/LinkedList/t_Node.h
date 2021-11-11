@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef T_NODE_H
+#define T_NODE_H
+
 namespace LinkedList {
 	template <class T>
 
@@ -14,3 +17,5 @@ namespace LinkedList {
 		Node(const T, Node<T>*, Node<T>*);
 	};
 }
+
+#endif // !T_NODE_H

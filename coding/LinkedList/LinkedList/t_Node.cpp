@@ -1,5 +1,8 @@
 #include "t_Node.h"
 
+#ifndef T_NODE_CPP
+#define T_NODE_CPP
+
 namespace LinkedList {
 	template <class T>
 	Node<T>::Node(const T val) {
@@ -22,3 +25,5 @@ namespace LinkedList {
 		Node::next = next;
 	}
 }
+
+#endif // !T_NODE_CPP

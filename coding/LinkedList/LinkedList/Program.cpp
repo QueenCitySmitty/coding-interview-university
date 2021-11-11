@@ -8,6 +8,8 @@
 #include "t_DoublyLinkedList.cpp"
 #include "t_Stack.h"
 #include "t_Stack.cpp"
+#include "t_Queue.hpp"
+#include "t_Queue.cpp"
 
 void testLinkedList()
 {
@@ -85,10 +87,30 @@ void testStack()
     }
 }
 
+void testQueue()
+{
+    Queue<int> q{};
+
+    q.Enqueue(1);
+    q.Enqueue(2);
+    q.Enqueue(3);
+    q.Enqueue(4);
+    q.Enqueue(5);
+
+    std::cout << "Queue size: " << q.Count() << std::endl;
+
+    std::cout << "Peek: " << q.Peek() << std::endl;
+
+    while (q.Count() > 0) {
+        std::cout << "Val: " << q.Dequeue() << std::endl;
+    }
+}
+
 int main()
 {
-    testLinkedList();
+    //testLinkedList();
     //testStack();
+    testQueue();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -1,5 +1,8 @@
 #include "t_LinkedList.h"
 
+#ifndef T_DOUBLYLINKEDLIST_CPP
+#define T_DOUBLYLINKEDLIST_CPP
+
 namespace LinkedList {
 	template <class T>
 	LinkedList<T>::LinkedList() {
@@ -75,7 +78,11 @@ namespace LinkedList {
 		Node<T>* temp = head;
 
 		head = head->next;
-		head->prev = nullptr;
+
+		if (head)
+		{
+			head->prev = nullptr;
+		}
 
 		delete temp;
 		--size;
@@ -187,3 +194,4 @@ namespace LinkedList {
 		--size;
 	}
 }
+#endif // !T_DOUBLYLINKEDLIST_CPP

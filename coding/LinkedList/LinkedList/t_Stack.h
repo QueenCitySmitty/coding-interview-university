@@ -2,6 +2,9 @@
 
 #include "t_LinkedList.h"
 
+#ifndef T_STACK_H
+#define T_STACK_H
+
 template <class T>
 class Stack
 {
@@ -17,3 +20,5 @@ public:
 private:
 	LinkedList::LinkedList<T>* linkedList;
 };
+
+#endif // !T_STACK_H

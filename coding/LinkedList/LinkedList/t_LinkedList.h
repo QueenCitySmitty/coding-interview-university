@@ -1,5 +1,9 @@
 #pragma once
+
 #include "t_Node.h"
+
+#ifndef T_LINKEDLIST_H
+#define T_LINKEDLIST_H
 
 namespace LinkedList {
 	template <class T>
@@ -33,3 +37,5 @@ namespace LinkedList {
 		Node<T>* tail;
 	};
 }
+
+#endif // !T_LINKEDLIST_H
