@@ -5,13 +5,13 @@
 #include "t_Node.h"
 #include "t_Node.cpp"
 #include "t_LinkedList.h"
-#include "t_SinglyLinkedList.cpp"
+#include "t_DoublyLinkedList.cpp"
 #include "t_Stack.h"
 #include "t_Stack.cpp"
 
 void testLinkedList()
 {
-    LinkedList<int> linkedList{};
+    LinkedList::LinkedList<int> linkedList{};
 
     std::cout << "Size: " << linkedList.size << std::endl;
 
@@ -87,8 +87,8 @@ void testStack()
 
 int main()
 {
-    // testLinkedList();
-    testStack();
+    testLinkedList();
+    //testStack();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

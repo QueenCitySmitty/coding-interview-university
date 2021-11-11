@@ -38,17 +38,13 @@ namespace LinkedList {
 	template <class T>
 	void LinkedList<T>::pushBack(T value) {
 		Node<T>* n = new Node<T>(value);
-		Node<T>* curr = head;
 
-		if (!curr) {
+		if (!tail) {
 			head = n;
 		}
 		else {
-			while (curr->next != nullptr) {
-				curr = curr->next;
-			}
-
-			curr->next = n;
+			n->prev = tail;
+			tail->next = n;
 		}
 
 		tail = n;
@@ -64,6 +60,7 @@ namespace LinkedList {
 			head = n;
 		}
 		else {
+			head->prev = n;
 			n->next = head;
 			head = n;
 		}
@@ -78,6 +75,7 @@ namespace LinkedList {
 		Node<T>* temp = head;
 
 		head = head->next;
+		head->prev = nullptr;
 
 		delete temp;
 		--size;
@@ -95,14 +93,10 @@ namespace LinkedList {
 			return val;
 		}
 		else {
-			Node<T>* ptr = head;
+			Node<T>* ptr = tail;
 
-			while (ptr->next != tail) {
-				ptr = ptr->next;
-			}
-
-			ptr->next = nullptr;
-			tail = ptr;
+			tail = tail->prev;
+			tail->next = nullptr;
 		}
 
 		--size;
@@ -116,6 +110,7 @@ namespace LinkedList {
 		if (index == 0)
 		{
 			n->next = head;
+			head->prev = n;
 			head = n;
 		}
 		else {
@@ -127,7 +122,14 @@ namespace LinkedList {
 			}
 
 			n->next = ptr->next;
+			n->prev = ptr;
+
+			if (ptr->next != nullptr) {
+				ptr->next->prev = n;
+			}
+
 			ptr->next = n;
+
 		}
 
 		++size;
@@ -142,6 +144,7 @@ namespace LinkedList {
 
 		while (curr != nullptr) {
 			curr->next = prev;
+			curr->prev = next;
 			prev = curr;
 			curr = next;
 			next = next == nullptr ? nullptr : next->next;
@@ -160,16 +163,25 @@ namespace LinkedList {
 			delete ptr;
 		}
 		else {
-			while (index > 1)
+			while (index > 0)
 			{
 				--index;
 				ptr = ptr->next;
 			}
 
-			Node<T>* temp = ptr->next;
-			ptr->next = ptr->next->next;
+			if (ptr->next != nullptr) {
+				ptr->next->prev = ptr->prev;
+			}
 
-			delete temp;
+			if (ptr->prev != nullptr) {
+				ptr->prev->next = ptr->next;
+			}
+
+			if (ptr->next == nullptr)
+			{
+				tail = ptr;
+			}
+
 		}
 
 		--size;

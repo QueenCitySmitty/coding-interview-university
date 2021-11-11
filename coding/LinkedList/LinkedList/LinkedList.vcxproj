@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="t_DoublyLinkedList.cpp" />
     <ClCompile Include="t_SinglyLinkedList.cpp" />
     <ClCompile Include="t_Node.cpp" />
     <ClCompile Include="t_Stack.cpp" />

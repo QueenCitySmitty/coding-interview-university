@@ -2,7 +2,7 @@
 
 template <class T>
 Stack<T>::Stack() {
-	this->linkedList = new LinkedList<T>();
+	this->linkedList = new LinkedList::LinkedList<T>();
 }
 
 template <class T>

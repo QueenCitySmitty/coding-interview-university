@@ -27,6 +27,9 @@
     <ClCompile Include="t_Stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="t_DoublyLinkedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="t_LinkedList.h">

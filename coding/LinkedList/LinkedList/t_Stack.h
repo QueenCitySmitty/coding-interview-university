@@ -15,5 +15,5 @@ public:
 
 
 private:
-	LinkedList<T>* linkedList;
+	LinkedList::LinkedList<T>* linkedList;
 };
