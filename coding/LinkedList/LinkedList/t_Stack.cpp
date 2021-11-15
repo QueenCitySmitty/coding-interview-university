@@ -1,8 +1,9 @@
 #include "t_Stack.h"
 
 template <class T>
-Stack<T>::Stack() {
-	this->linkedList = new LinkedList::LinkedList<T>();
+Stack<T>::Stack():
+	linkedList{}
+{
 }
 
 template <class T>

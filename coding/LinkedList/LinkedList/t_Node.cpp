@@ -5,14 +5,14 @@
 
 namespace LinkedList {
 	template <class T>
-	Node<T>::Node(const T val):
-		this(val, nullptr, nullptr)
+	Node<T>::Node(const T val)
+		: Node(val, nullptr, nullptr)
 	{
 	}
 
 	template <class T>
 	Node<T>::Node(const T val, Node<T>* next)
-		: this(val, nullptr, next)
+		: Node(val, nullptr, next)
 	{
 	}
 

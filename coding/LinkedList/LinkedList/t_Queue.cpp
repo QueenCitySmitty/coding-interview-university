@@ -3,9 +3,9 @@
 #include "t_DoublyLinkedList.cpp"
 
 template <class T>
-Queue<T>::Queue()
+Queue<T>::Queue():
+	linkedList{}
 {
-	this->linkedList = new LinkedList::LinkedList<T>();
 }
 
 template <class T>
