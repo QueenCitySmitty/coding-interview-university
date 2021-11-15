@@ -14,6 +14,7 @@ namespace LinkedList {
 
 		// Constructors
 		LinkedList();
+		~LinkedList();
 
 		T valueAt(int index);
 		bool isEmpty();

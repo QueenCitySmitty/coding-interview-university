@@ -15,7 +15,7 @@ int Queue<T>::Count()
 }
 
 template <class T>
-void Queue<T>::Enqueue(T value)
+void Queue<T>::Enqueue(const T value)
 {
 	this->linkedList->pushBack(value);
 }

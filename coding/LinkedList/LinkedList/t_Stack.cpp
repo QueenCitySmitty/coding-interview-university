@@ -6,7 +6,7 @@ Stack<T>::Stack() {
 }
 
 template <class T>
-void Stack<T>::Push(T element) {
+void Stack<T>::Push(const T element) {
 	this->linkedList->pushFront(element);
 }
 

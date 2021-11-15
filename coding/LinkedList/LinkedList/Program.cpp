@@ -108,9 +108,9 @@ void testQueue()
 
 int main()
 {
-    //testLinkedList();
+    testLinkedList();
     //testStack();
-    testQueue();
+    //testQueue();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

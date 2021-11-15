@@ -5,17 +5,33 @@
 
 namespace LinkedList {
 	template <class T>
-	LinkedList<T>::LinkedList() {
-		size = 0;
-		head = nullptr;
-		tail = nullptr;
+	LinkedList<T>::LinkedList():
+		size{0},
+		head{nullptr},
+		tail{nullptr}
+	{
+	}
+
+	template <class T>
+	LinkedList<T>::~LinkedList() {
+		Node<T>* curr = head;
+
+		if (head) {
+			Node<T>* next = curr->next;
+
+			while (curr) {
+				next = curr->next;
+				delete curr;
+				curr = next;
+			}
+		}
 	}
 
 	template <class T>
 	T LinkedList<T>::valueAt(int index) {
 		Node<T>* ptr = head;
 
-		while (index > 0 && ptr->next != nullptr) {
+		while (index > 0 && ptr->next) {
 			--index;
 			ptr = ptr->next;
 		}
@@ -128,15 +144,13 @@ namespace LinkedList {
 				ptr = ptr->next;
 			}
 
-			n->next = ptr->next;
 			n->prev = ptr;
 
-			if (ptr->next != nullptr) {
+			if (ptr->next) {
+				n->next = ptr->next;
 				ptr->next->prev = n;
+				ptr->next = n;
 			}
-
-			ptr->next = n;
-
 		}
 
 		++size;
@@ -147,14 +161,14 @@ namespace LinkedList {
 	{
 		Node<T>* prev = nullptr;
 		Node<T>* curr = head;
-		Node<T>* next = head == nullptr ? nullptr : head->next;
+		Node<T>* next = !head ? nullptr : head->next;
 
-		while (curr != nullptr) {
+		while (curr) {
 			curr->next = prev;
 			curr->prev = next;
 			prev = curr;
 			curr = next;
-			next = next == nullptr ? nullptr : next->next;
+			next = !next ? nullptr : next->next;
 		}
 
 		tail = head;
@@ -176,15 +190,13 @@ namespace LinkedList {
 				ptr = ptr->next;
 			}
 
-			if (ptr->next != nullptr) {
+			if (ptr->next) {
 				ptr->next->prev = ptr->prev;
 			}
 
-			if (ptr->prev != nullptr) {
-				ptr->prev->next = ptr->next;
-			}
+			ptr->prev->next = ptr->next;
 
-			if (ptr->next == nullptr)
+			if (!ptr->next)
 			{
 				tail = ptr;
 			}
