@@ -1,20 +1,31 @@
-#include "t_LinkedList.h"
+#pragma once
 
-namespace LinkedList {
-	template <class T>
-	LinkedList<T>::LinkedList():
-		size(0),
-		head{nullptr},
-		tail{nullptr}
+#include "t_Node.h"
+
+#ifndef T_LINKEDLIST_H
+#define T_LINKEDLIST_H
+
+template <class T>
+class LinkedList {
+public:
+	int size;
+	Node<T>* head;
+	Node<T>* tail;
+
+	// Constructors
+	LinkedList() :
+		size{ 0 },
+		head{ nullptr },
+		tail{ nullptr }
 	{
 	}
 
-	template <class T>
-	LinkedList<T>::~LinkedList() {
+	~LinkedList() 
+	{
 		Node<T>* curr = head;
 
 		if (head) {
-			Node<T>* next = curr->next;
+			Node<int>* next = curr->next;
 
 			while (curr) {
 				next = curr->next;
@@ -24,8 +35,8 @@ namespace LinkedList {
 		}
 	}
 
-	template <class T>
-	T LinkedList<T>::valueAt(int index) {
+	T valueAt(int index)
+	{
 		Node<T>* ptr = head;
 
 		while (index > 0 && ptr->next) {
@@ -36,23 +47,24 @@ namespace LinkedList {
 		return ptr->value;
 	}
 
-	template <class T>
-	bool LinkedList<T>::isEmpty() {
+	bool isEmpty()
+	{
 		return size == 0;
 	}
 
-	template <class T>
-	T LinkedList<T>::front() {
+	T front()
+	{
 		return head->value;
 	}
 
-	template <class T>
-	T LinkedList<T>::back() {
+	T back()
+	{
 		return tail->value;
 	}
 
-	template <class T>
-	void LinkedList<T>::pushBack(T value) {
+	// Additions
+	virtual void pushBack(T value)
+	{
 		Node<T>* n = new Node<T>(value);
 		Node<T>* curr = head;
 
@@ -72,8 +84,8 @@ namespace LinkedList {
 		++size;
 	}
 
-	template <class T>
-	void LinkedList<T>::pushFront(T value) {
+	virtual void pushFront(T value)
+	{
 		Node<T>* n = new Node<T>(value);
 
 		if (!head) {
@@ -87,10 +99,34 @@ namespace LinkedList {
 		++size;
 	}
 
+	virtual void insert(int index, T value)
+	{
+		Node<T>* n = new Node<T>{ value };
+
+		if (index == 0)
+		{
+			n->next = head;
+			head = n;
+		}
+		else {
+			auto ptr = head;
+			while (index > 1)
+			{
+				--index;
+				ptr = ptr->next;
+			}
+
+			n->next = ptr->next;
+			ptr->next = n;
+		}
+
+		++size;
+	}
+
 	// Removals
-	template <class T>
-	T LinkedList<T>::popFront() {
-		auto val{ head->value };
+	virtual T popFront()
+	{
+		T val{ head->value };
 		Node<T>* temp = head;
 
 		head = head->next;
@@ -101,8 +137,8 @@ namespace LinkedList {
 		return val;
 	}
 
-	template <class T>
-	T LinkedList<T>::popBack() {
+	virtual T popBack()
+	{
 		auto val{ tail->value };
 		if (head == tail) {
 			head = nullptr;
@@ -125,32 +161,31 @@ namespace LinkedList {
 		return val;
 	}
 
-	template <class T>
-	void LinkedList<T>::insert(int index, T value) {
-		Node<T>* n = new Node<T>{ value };
-
+	virtual void erase(int index)
+	{
+		Node<T>* ptr = head;
 		if (index == 0)
 		{
-			n->next = head;
-			head = n;
+			head = head->next;
+			delete ptr;
 		}
 		else {
-			Node<T>* ptr = head;
 			while (index > 1)
 			{
 				--index;
 				ptr = ptr->next;
 			}
 
-			n->next = ptr->next;
-			ptr->next = n;
+			auto temp = ptr->next;
+			ptr->next = ptr->next->next;
+
+			delete temp;
 		}
 
-		++size;
+		--size;
 	}
 
-	template <class T>
-	void LinkedList<T>::reverse()
+	virtual void reverse()
 	{
 		Node<T>* prev = nullptr;
 		Node<T>* curr = head;
@@ -166,28 +201,6 @@ namespace LinkedList {
 		tail = head;
 		head = prev;
 	}
+};
 
-	template <class T>
-	void LinkedList<T>::erase(int index) {
-		Node<T>* ptr = head;
-		if (index == 0)
-		{
-			head = head->next;
-			delete ptr;
-		}
-		else {
-			while (index > 1)
-			{
-				--index;
-				ptr = ptr->next;
-			}
-
-			Node<T>* temp = ptr->next;
-			ptr->next = ptr->next->next;
-
-			delete temp;
-		}
-
-		--size;
-	}
-}
+#endif // !T_LINKEDLIST_H

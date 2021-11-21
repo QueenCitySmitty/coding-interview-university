@@ -2,18 +2,16 @@
 //
 
 #include <iostream>
-#include "t_Node.h"
-#include "t_Node.cpp"
 #include "t_LinkedList.h"
-#include "t_DoublyLinkedList.cpp"
 #include "t_Stack.h"
-#include "t_Stack.cpp"
-#include "t_Queue.hpp"
-#include "t_Queue.cpp"
+#include "t_Queue.h"
 
 void testLinkedList()
 {
-    LinkedList::LinkedList<int> linkedList{};
+    //LinkedList::Node<int> n{2};
+    LinkedList<int> linkedList{};
+
+    linkedList.pushBack(0);
 
     std::cout << "Size: " << linkedList.size << std::endl;
 
@@ -109,8 +107,8 @@ void testQueue()
 int main()
 {
     testLinkedList();
-    //testStack();
-    //testQueue();
+    testStack();
+    testQueue();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
